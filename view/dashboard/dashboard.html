@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Environmental Dashboard</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <i class="fas fa-leaf fa-2x mb-2"></i>
+        <h4>EcoMonitor</h4>
+      </div>
+      <nav class="nav flex-column">
+        <div class="nav-item">
+          <a class="nav-link active" href="#dashboard">
+            <i class="fas fa-tachometer-alt"></i>
+            Dashboard
+          </a>
+        </div>
+      </nav>
+
+      <div
+        class="mt-auto" onclick="window.location.href = '../auth/login.html';">
+        <div class="bg-white bg-opacity-10 p-3 rounded-3 text-center">
+          <div class="text-white" style="font-size: 0.9rem">
+            <i
+              class="fas fa-user-circle"
+              style="font-size: 30px; margin-bottom: 8px"
+            ></i
+            ><br />
+            <strong>USER</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="header">
+        <h2 style="margin: 0; color: #495057">
+          Environmental Monitoring Dashboard
+        </h2>
+        <div class="user-info">
+          <div class="status-indicator">
+            <div class="status-dot" id="connectionStatus"></div>
+            <span id="connectionText">Connecting...</span>
+          </div>
+          <div class="user-avatar ms-3">U</div>
+          <div>
+            <div style="font-weight: 600; color: #495057">USER</div>
+            <div style="font-size: 0.85rem; color: #6c757d">Administrator</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="errorMessage" class="error-message" style="display: none"></div>
+
+      <div class="metric-cards">
+        <div class="metric-card">
+          <div class="metric-title">Temperature</div>
+          <div class="metric-value" id="tempValue">
+            --<span class="metric-unit">°C</span>
+          </div>
+          <div class="metric-timestamp" id="tempTimestamp">
+            Last updated: --
+          </div>
+          <button
+            class="btn btn-analyze"
+            onclick="analyzeMetric('temperature')"
+          >
+            <i class="fas fa-search me-2"></i>ANALYSE
+          </button>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-title">humidity</div>
+          <div class="metric-value" id="moistureValue">
+            --<span class="metric-unit">%</span>
+          </div>
+          <div class="metric-timestamp" id="moistureTimestamp">
+            Last updated: --
+          </div>
+          <button class="btn btn-analyze" onclick="analyzeMetric('moisture')">
+            <i class="fas fa-search me-2"></i>ANALYSE
+          </button>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-title">Potential Hydrogen</div>
+          <div class="metric-value" id="phValue">
+            --<span class="metric-unit">pH</span>
+          </div>
+          <div class="metric-timestamp" id="phTimestamp">Last updated: --</div>
+          <button class="btn btn-analyze" onclick="analyzeMetric('ph')">
+            <i class="fas fa-search me-2"></i>ANALYSE
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="chart-section">
+            <div class="chart-header">
+              <div>
+                <div class="chart-title">Temperature Trends</div>
+                <div class="chart-subtitle">
+                  Daily average temperature readings
+                </div>
+              </div>
+              <div class="chart-subtitle">Last 7 days</div>
+            </div>
+            <div id="chartLoading" class="loading">
+              <div class="spinner-border text-success" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+            <canvas id="temperatureChart" style="display: none"></canvas>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="settings-panel">
+            <div class="settings-title">Setting Menu</div>
+
+            <div class="setting-item">
+              <label class="setting-label">REFRESH INTERVAL</label>
+              <select
+                class="form-select"
+                id="refreshInterval"
+                onchange="updateRefreshInterval()"
+              >
+                <option value="5000">5 seconds</option>
+                <option value="10000" selected>10 seconds</option>
+                <option value="30000">30 seconds</option>
+                <option value="60000">1 minute</option>
+              </select>
+            </div>
+
+            <div class="setting-item">
+              <label class="setting-label">CHART DAYS</label>
+              <select
+                class="form-select"
+                id="chartDays"
+                onchange="updateChartData()"
+              >
+                <option value="7" selected>Last 7 days</option>
+                <option value="14">Last 14 days</option>
+                <option value="30">Last 30 days</option>
+              </select>
+            </div>
+
+            <div class="setting-item">
+              <label class="setting-label">DEVICE FILTER</label>
+              <select
+                class="form-select"
+                id="deviceFilter"
+                onchange="updateChartData()"
+              >
+                <option value="">All Devices</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
+    <script src="../js/dashboard.js"></script>
+  </body>
+</html>

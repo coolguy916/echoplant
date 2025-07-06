@@ -1,0 +1,104 @@
+ html, body {
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        background-color: #f8f9fa;
+      }
+
+      .container-fluid {
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        overflow: hidden;
+      }
+
+      .row {
+        height: 100%;
+      }
+
+      .form-section {
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        height: 100%;
+      }
+
+      .bg-image {
+        background-image: url("../../public/img/farm01.jpg"); /* Make sure this path is correct */
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+      }
+
+      .btn-custom {
+        background-color: #4d692e;
+        color: white;
+      }
+
+      .btn-custom:hover {
+        background-color: #3b521d;
+      }
+
+      .btn-custom:disabled {
+        background-color: #6c757d;
+        cursor: not-allowed;
+      }
+
+      /* Error and Success Message Styles */
+      .alert {
+        margin-bottom: 1rem;
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+      }
+
+      .alert-danger {
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        color: #721c24;
+      }
+
+      .alert-success {
+        background-color: #d1edcc;
+        border-color: #c3e6cb;
+        color: #155724;
+      }
+
+      .alert-warning {
+        background-color: #fff3cd;
+        border-color: #ffeaa7;
+        color: #856404;
+      }
+
+      .form-control.is-invalid {
+        border-color: #dc3545;
+      }
+
+      .form-control.is-valid {
+        border-color: #28a745;
+      }
+
+      .invalid-feedback {
+        display: block;
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+      }
+
+      .spinner-border-sm {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      @media (min-width: 992px) {
+        .form-section {
+          padding: 4rem;
+        }
+
+        .bg-image {
+          border-top-right-radius: 1rem;
+          border-bottom-right-radius: 1rem;
+        }
+      }

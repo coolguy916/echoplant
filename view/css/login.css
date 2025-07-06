@@ -1,0 +1,53 @@
+ html, body {
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        background-color: #f8f9fa;
+      }
+
+      .container-fluid {
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        overflow: hidden;
+      }
+
+      .row {
+        height: 100%;
+      }
+
+      .form-section {
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        height: 100%;
+      }
+
+      .bg-image {
+        background-image: url("../../public/img/farm01.jpg"); /* Replace with your actual image path */
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+      }
+
+      .btn-custom {
+        background-color: #4d692e;
+        color: white;
+      }
+
+      .btn-custom:hover {
+        background-color: #3b521d;
+      }
+
+      @media (min-width: 992px) {
+        .form-section {
+          padding: 4rem;
+        }
+
+        .bg-image {
+          border-top-right-radius: 1rem;
+          border-bottom-right-radius: 1rem;
+        }
+      }
